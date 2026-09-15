@@ -1,6 +1,6 @@
 # Atlas Urbano — exemplo Leaflet
 
-Uma visualização cartográfica interativa de pontos de interesse em São Paulo, criada com Leaflet, OpenStreetMap, React e Vinext.
+Uma visualização cartográfica interativa de pontos de interesse em São Paulo, criada com Leaflet, OpenStreetMap, React e Next.js.
 
 ## Executar localmente
 
@@ -19,3 +19,7 @@ pnpm start
 ```
 
 Os mapas usam tiles públicos do OpenStreetMap e precisam de conexão com a internet para serem exibidos.
+
+## Hospedagem
+
+Cada envio para a branch `main` publica automaticamente o site no GitHub Pages.
