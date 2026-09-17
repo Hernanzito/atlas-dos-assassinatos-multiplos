@@ -108,7 +108,11 @@ export default function MapExplorer() {
       }
       const feature = boundaries.features.find((item) => normalizeName(String(item.properties?.province || '')) === normalizeName(province));
       if (!feature) return;
-      const layer = L.geoJSON(feature as Parameters<typeof L.geoJSON>[0], { style: { color: '#111', weight: 1.5, fillColor: '#c8b7e8', fillOpacity: .3 } }).addTo(instance);
+      const layer = L.geoJSON(feature as Parameters<typeof L.geoJSON>[0], {
+        interactive: false,
+        style: { color: '#111', weight: 1.5, fillColor: '#c8b7e8', fillOpacity: .3 },
+      }).addTo(instance);
+      layer.bringToBack();
       provinceShape.current = layer;
       instance.fitBounds(layer.getBounds(), { padding: [32, 32], maxZoom: 9 });
     });
@@ -132,7 +136,7 @@ export default function MapExplorer() {
     </header>
     <section className="hero" id="top"><div><p className="kicker">Territorialización de hechos</p><h1>Donde la violencia<br /><em>se concentra.</em></h1></div><p className="hero-copy">Explore la distribución territorial de asesinatos múltiples, filtre por período y lugar y consulte cada hecho registrado en la base.</p></section>
     <section className="summary" aria-label="Resumen de los datos filtrados">
-      <div><strong>{filtered.length.toLocaleString('es-EC')}</strong><span>hechos</span></div><div><strong>{victims.toLocaleString('es-EC')}</strong><span>víctimas filtradas</span></div><div><strong>{province === 'todas' ? '—' : victims.toLocaleString('es-EC')}</strong><span>{province === 'todas' ? 'seleccione una provincia' : `víctimas en ${province}`}</span></div>
+      <div><strong>{filtered.length.toLocaleString('es-EC')}</strong><span>asesinatos múltiples</span></div><div><strong>{victims.toLocaleString('es-EC')}</strong><span>víctimas</span></div><div><strong>{province === 'todas' ? '—' : victims.toLocaleString('es-EC')}</strong><span>{province === 'todas' ? 'seleccione una provincia' : `víctimas en ${province}`}</span></div>
       <p>El tamaño del círculo representa el número de víctimas. El color identifica el año.</p>
     </section>
     <section className="workspace">
