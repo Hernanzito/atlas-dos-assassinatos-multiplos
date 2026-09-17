@@ -32,7 +32,7 @@ export default function MapExplorer() {
   const [listOpen, setListOpen] = useState(false);
 
   useEffect(() => {
-    fetch('/eventos.json').then(async (response) => await response.json() as EventRecord[]).then((data) => {
+    fetch(`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/eventos.json`).then(async (response) => await response.json() as EventRecord[]).then((data) => {
       setEvents(data);
       setSelected(data.find((event) => event.lat !== null) || data[0] || null);
     });

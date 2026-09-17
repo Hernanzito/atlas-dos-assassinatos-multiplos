@@ -9,3 +9,5 @@ out/
 !.env.example
 .DS_Store
 *.log
+*.xlsx
+*.xls
