@@ -42,9 +42,6 @@ input[type=range] { width:100%; margin:15px 0 0; accent-color:var(--ink); }
 .map-stage { position:relative; min-width:0; padding:27px 0 27px 27px; }
 .map { width:100%; height:606px; background:#ededed; filter:grayscale(.9) contrast(.88) brightness(1.08); }
 .map-caption { position:absolute; z-index:400; top:38px; right:12px; padding:7px 9px; background:#fff; border:1px solid var(--ink); font:9px monospace; }
-.number-marker-wrap { background:transparent; border:0; }
-.number-marker { display:grid; place-items:center; border:1.5px solid var(--ink); border-radius:50%; color:var(--ink); background:var(--marker-color); box-shadow:0 2px 0 rgba(0,0,0,.18); font:700 11px Arial,sans-serif; cursor:pointer; transition:transform .18s ease; }
-.number-marker:hover { transform:scale(1.12); }
 .detail-card { position:absolute; z-index:500; left:50px; bottom:50px; width:min(390px,calc(100% - 80px)); padding:23px; color:#fff; background:var(--ink); box-shadow:8px 8px 0 var(--lilac); }
 .detail-close { position:absolute; top:12px; right:14px; border:0; color:#fff; background:none; font-size:25px; cursor:pointer; }
 .detail-top { display:flex; gap:10px; align-items:center; padding-right:25px; font-size:9px; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }

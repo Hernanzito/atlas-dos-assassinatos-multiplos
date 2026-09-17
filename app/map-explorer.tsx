@@ -72,14 +72,12 @@ export default function MapExplorer() {
       if (cancelled || !map.current || !points.current) return;
       points.current.clearLayers();
       mapped.forEach((event) => {
-        const size = Math.min(48, 26 + event.victims * 1.25);
-        const marker = L.marker([event.lat!, event.lng!], {
-          icon: L.divIcon({
-            className: 'number-marker-wrap',
-            html: `<span class="number-marker" style="--marker-color:${yearColors[event.year]};width:${size}px;height:${size}px">${event.victims}</span>`,
-            iconSize: [size, size],
-            iconAnchor: [size / 2, size / 2],
-          }),
+        const marker = L.circleMarker([event.lat!, event.lng!], {
+          radius: Math.min(18, 5 + event.victims * .85),
+          color: '#111',
+          weight: 1.25,
+          fillColor: yearColors[event.year],
+          fillOpacity: .86,
         }).addTo(points.current!);
         marker.bindTooltip(`<strong>${event.canton || event.province || 'Local não informado'}</strong><br>${event.victims} vítimas · ${formatDate(event.date)}`, { className: 'map-tooltip' });
         marker.on('click', () => setSelected(event));
@@ -105,7 +103,7 @@ export default function MapExplorer() {
     <section className="hero" id="top"><div><p className="kicker">Territorialização de ocorrências</p><h1>Onde a violência<br /><em>se concentra.</em></h1></div><p className="hero-copy">Explore a distribuição territorial de assassinatos múltiplos, filtre por período e lugar e consulte cada ocorrência registrada na base.</p></section>
     <section className="summary" aria-label="Resumo dos dados filtrados">
       <div><strong>{filtered.length.toLocaleString('pt-BR')}</strong><span>ocorrências</span></div><div><strong>{victims.toLocaleString('pt-BR')}</strong><span>vítimas</span></div><div><strong>{mapped.length.toLocaleString('pt-BR')}</strong><span>pontos no mapa</span></div>
-      <p>O número dentro de cada círculo indica as vítimas da ocorrência. A cor identifica o ano.</p>
+      <p>O tamanho do círculo representa o número de vítimas. A cor identifica o ano.</p>
     </section>
     <section className="workspace">
       <aside className="filters" aria-label="Filtros do mapa">
